@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import PlaygroundSupport
+import SwiftUI
+
+struct ContentView: View {
+    
+    var body: some View {
+        
+        HStack{
+            LiveView() 
+                .padding(.leading, 75)
+                .padding(.trailing, 50)
+                .padding(.top, 20)
+            InfoSideView() 
+                .padding(.leading, 15)
+                .padding(.trailing, 25)
+                .padding(.top, 20)
+                .padding(.bottom, 20)
+            }
+    }
+    
+}
+
+// set LiveView
+PlaygroundPage.current.wantsFullScreenLiveView = true
+PlaygroundPage.current.setLiveView(ContentView())
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 593}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
