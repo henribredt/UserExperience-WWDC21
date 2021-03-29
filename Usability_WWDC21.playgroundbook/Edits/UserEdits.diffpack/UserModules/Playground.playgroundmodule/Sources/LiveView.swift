@@ -2,7 +2,11 @@ import SwiftUI
 
 public struct LiveView: View {
     
-    public init() {}
+    @ObservedObject private var currentChapter: UserProgress
+    
+    public init(pCurrentChapter: UserProgress) {
+        self.currentChapter = pCurrentChapter
+    }
     
     public var body: some View {
         ZStack{
@@ -10,7 +14,7 @@ public struct LiveView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .overlay(
-                    AppSimulationView()
+                    AppSimulationView(pCurrentChapter: currentChapter)
                         .padding(45)
                         // safe area
                         .padding(.top, 26)

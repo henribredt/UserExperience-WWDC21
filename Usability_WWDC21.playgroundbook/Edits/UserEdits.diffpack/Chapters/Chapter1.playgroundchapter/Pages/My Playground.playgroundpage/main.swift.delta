@@ -11,19 +11,23 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var currentChapter = UserProgress()
+    
     var body: some View {
         
         HStack{
-            LiveView() 
+            LiveView(pCurrentChapter: currentChapter) 
                 .padding(.leading, 75)
                 .padding(.trailing, 50)
                 .padding(.top, 20)
-            InfoSideView() 
+            
+            InfoSideView(pCurrentChapter: currentChapter) 
                 .padding(.leading, 15)
                 .padding(.trailing, 25)
                 .padding(.top, 20)
                 .padding(.bottom, 20)
             }
+        
     }
     
 }
@@ -36,7 +40,7 @@ PlaygroundPage.current.setLiveView(ContentView())
 
 </string>
 			<key>ModifiedRange</key>
-			<string>{1, 593}</string>
+			<string>{1, 735}</string>
 			<key>OriginalContent</key>
 			<string></string>
 			<key>OriginalRange</key>

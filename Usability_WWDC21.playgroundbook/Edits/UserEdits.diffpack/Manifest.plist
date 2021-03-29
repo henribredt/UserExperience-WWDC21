@@ -26,19 +26,27 @@
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/UserModule.playgroundmodule/Sources/LiveView.swift</string>
+				<string>UserModules/App.playgroundmodule/Sources/App.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/UserModule.playgroundmodule/Sources/InfoSideView.swift</string>
+				<string>UserModules/Playground.playgroundmodule/Sources/Chapters.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/UserModule.playgroundmodule/Sources/Chapters.swift</string>
+				<string>UserModules/Playground.playgroundmodule/Sources/LiveView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/UserModule.playgroundmodule/Sources/AppSimulationView.swift</string>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppSimulationView.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/UserProgress.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/InfoSideView.swift</string>
 			</dict>
 		</array>
 		<key>Modified</key>
