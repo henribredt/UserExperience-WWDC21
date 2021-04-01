@@ -11,28 +11,27 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var currentChapter = UserProgress()
+    // track user progress to update chapters and simulated app
+    @StateObject var progress = UserProgress()
     
     var body: some View {
-        
         HStack{
-            LiveView(pCurrentChapter: currentChapter) 
+            AppLiveView(progress: progress) 
                 .padding(.leading, 75)
                 .padding(.trailing, 50)
                 .padding(.top, 20)
             
-            InfoSideView(pCurrentChapter: currentChapter) 
+            InfoSideView(progress: progress) 
                 .padding(.leading, 15)
                 .padding(.trailing, 25)
                 .padding(.top, 20)
                 .padding(.bottom, 20)
             }
-        
     }
     
 }
 
-// set LiveView
+// set full screen LiveView
 PlaygroundPage.current.wantsFullScreenLiveView = true
 PlaygroundPage.current.setLiveView(ContentView())
 
@@ -40,7 +39,7 @@ PlaygroundPage.current.setLiveView(ContentView())
 
 </string>
 			<key>ModifiedRange</key>
-			<string>{1, 735}</string>
+			<string>{1, 764}</string>
 			<key>OriginalContent</key>
 			<string></string>
 			<key>OriginalRange</key>

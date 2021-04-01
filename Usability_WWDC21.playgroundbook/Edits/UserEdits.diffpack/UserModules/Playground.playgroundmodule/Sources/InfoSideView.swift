@@ -4,18 +4,18 @@ import PlaygroundSupport
 
 public struct InfoSideView: View {
     
-    public init(pCurrentChapter: UserProgress) {
-        self.currentChapter = pCurrentChapter
+    public init(progress: UserProgress) {
+        self.progress = progress
     }
     
-    @ObservedObject private var currentChapter: UserProgress
+    @ObservedObject private var progress: UserProgress
     
     public var body: some View {
         
         VStack(alignment: .leading, spacing: 5){
             // Headline
-            Text(Chapters.bank[currentChapter.progress].headline)
-                .font(.system(size: 45, design: .rounded))
+            Text(Chapters.bank[progress.chapter].headline)
+                .font(.system(size: 40, design: .rounded))
                 .bold()
                 .padding(.bottom, 5)
             Divider()
@@ -25,26 +25,28 @@ public struct InfoSideView: View {
                 VStack(alignment: .leading){
                     
                     // Subheadline
-                    Text(Chapters.bank[currentChapter.progress].subHeadline)
+                    Text(Chapters.bank[progress.chapter].subHeadline)
                         .bold()
                         .font(.system(.title3, design: .rounded))
                         .foregroundColor(.primary)
                         .padding(.bottom, 5)
                     
                     //Problem description
-                    Text(Chapters.bank[currentChapter.progress].problemDescription)
+                    Text(Chapters.bank[progress.chapter].problemDescription)
                         .foregroundColor(.secondary)
                     .padding(.bottom, 55)
                     
                     // Content Sub title
-                    Text(Chapters.bank[currentChapter.progress].contentSubTitle)
+                    Text(Chapters.bank[progress.chapter].contentSubTitle)
                         .font(.system(.title3, design: .rounded))
                         .bold()
                         .padding(.bottom, 5)
                     
                     // Improvement description
-                    Text(Chapters.bank[currentChapter.progress].improvmentDescription)
+                    Text(Chapters.bank[progress.chapter].improvmentDescription)
                         .foregroundColor(.secondary)
+                    
+                    
                     
                 }
                 
@@ -54,27 +56,28 @@ public struct InfoSideView: View {
             Divider()
                 .padding(.bottom, 10)
             HStack(alignment: .top){
-                Text("Chapter \(currentChapter.progress + 1) of \(Chapters.bank.count)")
+                Text("Page \(progress.chapter + 1) of \(Chapters.bank.count)")
                         .foregroundColor(.secondary)
                         .font(.caption)
                 
                 Spacer()
+                
                 Button(action: {
-                    if !(currentChapter.progress == Chapters.bank.count-1) {
-                        currentChapter.progress += 1
+                    if !(progress.chapter == Chapters.bank.count-1) {
+                        progress.chapter += 1
                     } else {
                         // stop playground
                         PlaygroundPage.current.finishExecution()
                     }
                     
                 }) {
-                    Text(currentChapter.progress == 0 ? " Get stared " : currentChapter.progress == Chapters.bank.count-1 ? "  Stop Playground  ": " Apply changes ")
+                    Text(progress.chapter == 0 ? " Get stared " : progress.chapter == Chapters.bank.count-1 ? "  Stop Playground  ": " Next page ")
                         .fontWeight(.bold)
                         .padding(10)
-                        .background(!(currentChapter.progress == Chapters.bank.count-1) ? Color.blue : Color.gray)
+                        .background(!(progress.chapter == Chapters.bank.count-1) ? Color.blue : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(40)
-                        
+                    
                 }
             }
             

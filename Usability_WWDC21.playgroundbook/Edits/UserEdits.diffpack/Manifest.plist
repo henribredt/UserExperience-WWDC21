@@ -26,19 +26,7 @@
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/App.playgroundmodule/Sources/App.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
 				<string>UserModules/Playground.playgroundmodule/Sources/Chapters.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Playground.playgroundmodule/Sources/LiveView.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/Playground.playgroundmodule/Sources/AppSimulationView.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
@@ -47,6 +35,22 @@
 			<dict>
 				<key>File</key>
 				<string>UserModules/Playground.playgroundmodule/Sources/InfoSideView.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppLiveView.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppView2.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppView1.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/InputValidator.swift</string>
 			</dict>
 		</array>
 		<key>Modified</key>
