@@ -63,21 +63,24 @@ public struct InfoSideView: View {
                 Spacer()
                 
                 Button(action: {
-                    if !(progress.chapter == Chapters.bank.count-1) {
-                        progress.chapter += 1
+                    if !(progress.chapter == Chapters.bank.count-1 && progress.inChapterProgress == .applyChanges) {
+                        //progress.chapter += 1
+                        progress.didTapNext()
                     } else {
                         // stop playground
                         PlaygroundPage.current.finishExecution()
                     }
                     
                 }) {
-                    Text(progress.chapter == 0 ? " Get stared " : progress.chapter == Chapters.bank.count-1 ? "  Stop Playground  ": " Next page ")
+                    // Button title, depends on the UserState
+                    Text(progress.inChapterProgress == .inital ? progress.chapter == 0 ? "  Run app  " : progress
+                            .chapter == Chapters.bank.count-1 ? " Run final app " : " Apply changes " : progress.chapter == Chapters.bank.count-1 ? " Stop Playground " : " Next page ")
                         .fontWeight(.bold)
                         .padding(10)
-                        .background(!(progress.chapter == Chapters.bank.count-1) ? Color.blue : Color.gray)
+                        // blue default bg color, greay for last chapter
+                        .background(!(progress.chapter == Chapters.bank.count-1 && progress.inChapterProgress == .applyChanges) ? Color.blue : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(40)
-                    
                 }
             }
             

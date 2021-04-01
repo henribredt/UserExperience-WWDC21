@@ -4,9 +4,11 @@ import SwiftUI
 
 public struct AppView1: View {
     
-    public init() {}
+    @ObservedObject private var progress: UserProgress
     
-    @State private var simulationBooting = true
+    public init(progress: UserProgress) {
+        self.progress = progress
+    }
     
     @State private var name = "Your Name here"
     @State private var mail = "Your Mail adress here"
@@ -18,7 +20,8 @@ public struct AppView1: View {
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 10){
-            if simulationBooting {
+            
+            if progress.inChapterProgress == .inital {
                 Text("")
                     .font(.system(size: 80))
             } else {
@@ -76,12 +79,6 @@ public struct AppView1: View {
                 }
             }
             
-        }
-        // show the app interface after simulating booting for 10 seconds
-        .onAppear(){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                simulationBooting = false
-            }
         }
     }
     
