@@ -22,13 +22,23 @@ public struct AppLiveView: View {
                         // debug
                         //Color.red
                         VStack{
-                            if progress.chapter == 0 {
-                                AppView1(progress: progress)
-                            } else if progress.chapter == 1 {
-                                AppView2(progress: progress)
-                            }  else {
-                                Text("An internal error occured, please rerun the plaground.")
-                            } 
+                            // show booting when in inital state
+                            if progress.inChapterProgress == .inital {
+                                Text("")
+                                    .font(.system(size: 80))
+                                    .transition(.scale)
+                            } else { 
+                                // show app when in applyChanges state
+                                if progress.chapter == 0 {
+                                    AppView1(progress: progress)
+                                } else if progress.chapter == 1 {
+                                    AppView2(progress: progress)
+                                } else if progress.chapter == 2 {
+                                    AppView3(progress: progress)
+                                } else {
+                                    AppView4(progress: progress)
+                                }
+                            }
                         }
                     }
                         .padding(43)

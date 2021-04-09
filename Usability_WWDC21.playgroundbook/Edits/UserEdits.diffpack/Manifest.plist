@@ -52,6 +52,14 @@
 				<key>File</key>
 				<string>UserModules/Playground.playgroundmodule/Sources/InputValidator.swift</string>
 			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppView3.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppView4.swift</string>
+			</dict>
 		</array>
 		<key>Modified</key>
 		<array>

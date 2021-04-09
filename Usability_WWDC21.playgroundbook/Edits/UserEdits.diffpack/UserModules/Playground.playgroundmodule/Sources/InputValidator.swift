@@ -1,23 +1,19 @@
 
 public struct InputValidator {
-    /// Basic sign up screen input validator
-    static func validate(name: String, mail: String, password: String) -> Bool{
-        
-        // check mail
+    /// Basic input validator for name and mail
+    
+    static func namePassedCheck(name: String) -> Bool{
         if name.count < 3 {
-            // throw error
             return false
         }
         
-        // check mail
-        if !mail.contains("@") {
-            // throw error
-            return false
-        }
+        return true
+    }
+    
+    static func mailPassedCheck(mail: String) -> Bool {
         
-        // check password
-        if password.count < 4 {
-            // throw error
+        // exampleName@domaine.countryCode
+        if !mail.contains("@") || !mail.contains(".io"){
             return false
         }
         

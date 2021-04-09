@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-public enum InChaperProgress {
+public enum InChapterProgress {
     case inital
     case applyChanges
 }
@@ -15,13 +15,13 @@ public class UserProgress: ObservableObject {
     }
     
     @Published public var chapter: Int
-    @Published public var inChapterProgress : InChaperProgress
+    @Published public var inChapterProgress : InChapterProgress
     
     /// use to properly update the progress
     public func didTapNext() {
         if inChapterProgress == .inital {
             inChapterProgress = .applyChanges
-        }else {
+        } else {
             chapter += 1
             inChapterProgress = .inital
         } 

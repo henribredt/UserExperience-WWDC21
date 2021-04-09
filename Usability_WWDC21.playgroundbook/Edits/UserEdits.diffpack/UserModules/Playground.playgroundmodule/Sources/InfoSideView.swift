@@ -28,13 +28,12 @@ public struct InfoSideView: View {
                     Text(Chapters.bank[progress.chapter].subHeadline)
                         .bold()
                         .font(.system(.title3, design: .rounded))
-                        .foregroundColor(.primary)
                         .padding(.bottom, 5)
                     
                     //Problem description
                     Text(Chapters.bank[progress.chapter].problemDescription)
-                        .foregroundColor(.secondary)
-                    .padding(.bottom, 55)
+                        .opacity(0.75)
+                        .padding(.bottom, 55)
                     
                     // Content Sub title
                     Text(Chapters.bank[progress.chapter].contentSubTitle)
@@ -44,9 +43,7 @@ public struct InfoSideView: View {
                     
                     // Improvement description
                     Text(Chapters.bank[progress.chapter].improvmentDescription)
-                        .foregroundColor(.secondary)
-                    
-                    
+                        .opacity(0.75)
                     
                 }
                 
@@ -55,6 +52,8 @@ public struct InfoSideView: View {
             Spacer()
             Divider()
                 .padding(.bottom, 10)
+            
+            // footer
             HStack(alignment: .top){
                 Text("Page \(progress.chapter + 1) of \(Chapters.bank.count)")
                         .foregroundColor(.secondary)
@@ -73,8 +72,7 @@ public struct InfoSideView: View {
                     
                 }) {
                     // Button title, depends on the UserState
-                    Text(progress.inChapterProgress == .inital ? progress.chapter == 0 ? "  Run app  " : progress
-                            .chapter == Chapters.bank.count-1 ? " Run final app " : " Apply changes " : progress.chapter == Chapters.bank.count-1 ? " Stop Playground " : " Next page ")
+                    Text(progress.inChapterProgress == .inital ? progress.chapter == 0 ? "  Run app  " : progress.chapter == Chapters.bank.count-1 ? " Run final app " : " Apply changes " : progress.chapter == Chapters.bank.count-1 ? " Stop Playground " : " Next page ")
                         .fontWeight(.bold)
                         .padding(10)
                         // blue default bg color, greay for last chapter
@@ -82,6 +80,7 @@ public struct InfoSideView: View {
                         .foregroundColor(.white)
                         .cornerRadius(40)
                 }
+                .animation(.default)
             }
             
             

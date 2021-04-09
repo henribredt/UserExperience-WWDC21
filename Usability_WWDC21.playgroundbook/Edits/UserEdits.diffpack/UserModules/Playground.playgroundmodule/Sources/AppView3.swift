@@ -1,6 +1,7 @@
+
 import SwiftUI
 
-public struct AppView2: View {
+public struct AppView3: View {
     
     @ObservedObject private var progress: UserProgress
     
@@ -10,9 +11,9 @@ public struct AppView2: View {
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 0){
-            Text("Sign Up Screen")
-                .foregroundColor(.primary)
-                .font(.system(size: 33.0, weight: .black, design: .serif))
+            Text("Screen 3")
+                .foregroundColor(.green)
+                .font(.system(size: 33.0, weight: .black, design: .rounded))
                 .padding(33)
                 .transition(.scale)
         }
