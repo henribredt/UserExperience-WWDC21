@@ -10,60 +10,71 @@ public struct AppView1: View {
         self.progress = progress
     }
     
+    // User input
     @State private var name = "Your Name here"
     @State private var mail = "Your Mail adress here"
-    
     @State private var avatar = "👨🏼‍💻"
     
+    // Message content to inform user about bad input
     @State private var statusMessage = ""
-    @State private var statusMessageColor = Color.secondary
     
+    // show info view, when the user successfully "created" an account
+    @State private var showingSuccessView = false
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 10){
             
             Text("Create Profile")
-                .foregroundColor(.primary).font(.system(size: 23.0, weight: .thin, design: .rounded))
+                .foregroundColor(.primary).font(.system(size: 23.0, weight: .thin, design: .default))
                 .padding(.top)
                 
             Text("Choose a nick name, type in your mail and select an avatar")
                 .foregroundColor(.primary)
-                .font(.system(size: 23.0, weight: .regular, design: .serif))
+                .font(.system(size: 23.0, weight: .regular, design: .default))
                 
             Text(statusMessage)
-                .foregroundColor(statusMessageColor)
+                .foregroundColor(.green)
             
             Spacer()
+            
             Group{
                 TextField("Type here", text: $name)
                 TextField("Type here", text: $mail)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Select Emoji from Keyboard", text: $avatar)
+            }
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            
             Spacer()
-                
+            
+            // The two bottom buttons
             HStack{
+                
+                // OK button
                 Button(action: {
-                    //if InputValidator.validate(name: name, mail: mail, password: password) {
-                    //statusMessage = "Success!"
-                    //statusMessageColor = Color.red
-                            //} else {
-                    //name = ""
-                    //mail = ""
-                    //password = ""
-                    //statusMessage = "Some of your input is incorrect, try again"
-                    //statusMessageColor = Color.green
-                            //}
+                    // Check input
+                    if InputValidator.namePassedCheck(name: name) && InputValidator.mailPassedCheck(mail: mail) && InputValidator.avatarPassedCheck(avatar: avatar){
+                        // user successfully "created an account", show info screen
+                        showingSuccessView = true
+                    } else {
+                        // intentinally bad handling in this app version, will be improved :)
+                        name = ""
+                        mail = ""
+                        avatar = ""
+                        statusMessage = "Some of your input is incorrect, try again. Your mail must contain @ and be a .io domaine, avatar can only be a singe emoji, name must have at least three characters"
+                    }
                 }) {
                     Text(" OK ")
-                        .font(.system(size: 14.0, weight: .thin, design: .serif))
-                        .foregroundColor(Color.primary)
-                    
+                        .font(.system(size: 14.0, weight: .light, design: .default))
+                        .foregroundColor(Color.red)
                 }
-                    
-                    
+                
                 Spacer()
+                
+                // Clear button
                 Button(action: {
                     name = ""
                     mail = ""
+                    avatar = ""
                     
                 }) {
                     Text("  Clear  ▶︎  ")
@@ -72,12 +83,12 @@ public struct AppView1: View {
                         .padding(7)
                         .background(Color.green)
                         .foregroundColor(.white)
-                    
                 }
-                
             }
         }
+        // show success view if condition is true
+        .sheet(isPresented: $showingSuccessView) {
+            SuccessView()
+        }
     }
-    
-}
 }

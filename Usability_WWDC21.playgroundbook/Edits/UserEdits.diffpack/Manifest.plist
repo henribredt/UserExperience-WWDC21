@@ -26,10 +26,6 @@
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/Playground.playgroundmodule/Sources/Chapters.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
 				<string>UserModules/Playground.playgroundmodule/Sources/UserProgress.swift</string>
 			</dict>
 			<dict>
@@ -59,6 +55,18 @@
 			<dict>
 				<key>File</key>
 				<string>UserModules/Playground.playgroundmodule/Sources/AppView4.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/SuccessView.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/Pages.swift</string>
+			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/AppViewComponents.swift</string>
 			</dict>
 		</array>
 		<key>Modified</key>

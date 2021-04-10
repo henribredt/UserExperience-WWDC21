@@ -36,14 +36,13 @@ PlaygroundPage.current.wantsFullScreenLiveView = true
 PlaygroundPage.current.setLiveView(ContentView())
 
 
-
 </string>
 			<key>ModifiedRange</key>
-			<string>{1, 764}</string>
+			<string>{0, 763}</string>
 			<key>OriginalContent</key>
 			<string></string>
 			<key>OriginalRange</key>
-			<string>{1, 0}</string>
+			<string>{0, 0}</string>
 		</dict>
 	</array>
 	<key>File</key>

@@ -10,9 +10,6 @@ public struct AppView4: View {
         self.progress = progress
     }
     
-    // icons to let the user choose from
-    static let icons = ["🥰","👋🏻", "🦸🏼‍♂️", "🐳", "👑", "🎾", "👩🏽‍🔬"]
-    
     // user input
     @State private var name = ""
     @State private var icon = "👋🏻"
@@ -24,6 +21,7 @@ public struct AppView4: View {
     @State private var mailOkay = false
     @State private var mailNotOkayHighlight = false
     
+    // show info view, when the user successfully "created" an account
     @State private var showingSuccessView = false
     
     public var body: some View {
@@ -37,17 +35,17 @@ public struct AppView4: View {
             Spacer()
             
             // Select nick name view
-            Nickname(name: $name, nameOkay: $nameOkay, nameNotOkayHighlight: $nameNotOkayHighlight)
+            NicknameCheckAnimate(name: $name, nameOkay: $nameOkay, nameNotOkayHighlight: $nameNotOkayHighlight)
                 .padding(.bottom)
                 .animation(.default)
             
             // Type in mail view 
-            Mail(mail: $mail, mailOkay: $mailOkay, mailNotOkayHighlight: $mailNotOkayHighlight)
+            MailCheckAnimate(mail: $mail, mailOkay: $mailOkay, mailNotOkayHighlight: $mailNotOkayHighlight)
                 .padding(.bottom)
                 .animation(.default)
                 
             // Select avatar view
-            Avatar(icon: $icon)
+            AvatarCheckAnimate(icon: $icon)
             
             Spacer()
         }
@@ -85,8 +83,10 @@ public struct AppView4: View {
     
 }
 
+// Component views
+
 // select user name view
-struct Nickname: View {
+struct NicknameCheckAnimate: View {
     
     @Binding var name: String
     @Binding var nameOkay: Bool
@@ -94,39 +94,42 @@ struct Nickname: View {
     
     var body: some View {
         
-        Text("YOUR NICKNAME")
-            .font(.system(size: 12, weight: .bold))
-        
-        if nameNotOkayHighlight {
-            Text("must have at least three characters")
+        VStack(alignment: .leading, spacing: 10){
+            Text("YOUR NICKNAME")
                 .font(.system(size: 12, weight: .bold))
-                .foregroundColor(.red)
-        }
-        
-        HStack {
-            TextField("Nickname", text: $name)
-                .onChange(of: name, perform: { value in
-                    nameOkay = InputValidator.namePassedCheck(name: name)
-                    nameNotOkayHighlight = false
-                })
-            Image(systemName: nameOkay ? "checkmark.square.fill" : "exclamationmark.square.fill")
-                .foregroundColor(nameNotOkayHighlight ? Color.red : nameOkay ? Color.green : Color.secondary)
-                .onTapGesture {
-                    if !nameOkay{
-                        nameNotOkayHighlight = true
+            
+            if nameNotOkayHighlight {
+                Text("must have at least three characters")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(.red)
+            }
+            
+            HStack {
+                TextField("Nickname", text: $name)
+                    .onChange(of: name, perform: { value in
+                        nameOkay = InputValidator.namePassedCheck(name: name)
+                        nameNotOkayHighlight = false
+                    })
+                Image(systemName: nameOkay ? "checkmark.square.fill" : "exclamationmark.square.fill")
+                    .foregroundColor(nameNotOkayHighlight ? Color.red : nameOkay ? Color.green : Color.secondary)
+                    .onTapGesture {
+                        if !nameOkay{
+                            nameNotOkayHighlight = true
+                        }
                     }
-                }
+            }
+            .padding(11)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
+            
         }
-        .padding(11)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
-        .padding(.bottom)
         
+        .padding(.bottom)
         
     }
 }
 
 // Type in mail view
-struct Mail: View {
+struct MailCheckAnimate: View {
     
     @Binding var mail: String
     @Binding var mailOkay: Bool
@@ -134,38 +137,41 @@ struct Mail: View {
     
     var body: some View {
         
-        Text("YOUR MAIL")
-            .font(.system(size: 12, weight: .bold))
-        
-        if mailNotOkayHighlight {
-            Text("must contain @ and be a .io domaine")
+        VStack(alignment: .leading, spacing: 10){
+            Text("YOUR MAIL")
                 .font(.system(size: 12, weight: .bold))
-                .foregroundColor(.red)
-        }
-        
-        HStack {
-            TextField("Mail", text: $mail)
-                .onChange(of: mail, perform: { value in
-                    mailOkay = InputValidator.mailPassedCheck(mail: mail)
-                    mailNotOkayHighlight = false
-                })
-            Image(systemName: mailOkay ? "checkmark.square.fill" : "exclamationmark.square.fill")
-                .foregroundColor(mailNotOkayHighlight ? Color.red : mailOkay ? Color.green : Color.secondary)
-                .onTapGesture {
-                    if !mailOkay{
-                        mailNotOkayHighlight = true
+            
+            if mailNotOkayHighlight {
+                Text("must contain @ and be a .io domaine")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(.red)
+            }
+            
+            HStack {
+                TextField("Mail", text: $mail)
+                    .onChange(of: mail, perform: { value in
+                        mailOkay = InputValidator.mailPassedCheck(mail: mail)
+                        mailNotOkayHighlight = false
+                    })
+                Image(systemName: mailOkay ? "checkmark.square.fill" : "exclamationmark.square.fill")
+                    .foregroundColor(mailNotOkayHighlight ? Color.red : mailOkay ? Color.green : Color.secondary)
+                    .onTapGesture {
+                        if !mailOkay{
+                            mailNotOkayHighlight = true
+                        }
                     }
-                }
+            }
+            .padding(11)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
+            
         }
-        .padding(11)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
         
     }
     
 }
 
 // Select avatar view
-struct Avatar: View {
+struct AvatarCheckAnimate: View {
     
     @Binding var icon: String
     
@@ -177,12 +183,12 @@ struct Avatar: View {
             .padding(.bottom, 10)
         ScrollView(.horizontal , showsIndicators: false){
             HStack(spacing: 10) {
-                ForEach(AppView4.icons, id:\.self){ selectedIcon in
+                ForEach(Avatars.icons, id:\.self){ selectedIcon in
                     VStack(spacing: 5){
                         Text(selectedIcon)
                             .font(.system(size: 33))
                             .opacity(icon == selectedIcon ? 1.0 : 0.7)
-                            .padding(.leading, icon == AppView4.icons[0] ? 3 : icon == selectedIcon ? 12 : 3)
+                            .padding(.leading, icon == Avatars.icons[0] ? 3 : icon == selectedIcon ? 12 : 3)
                             //.padding(.leading, icon == selectedIcon ? 12 : icon == icons[0] ? 0 : 3)
                             .padding(.trailing, icon == selectedIcon ? 12 : 3)
                             .onTapGesture {
@@ -200,53 +206,3 @@ struct Avatar: View {
     }
 }
 
-// Create button in AppView 4
-struct ButtonView: View {
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(.blue)
-            HStack{
-                Spacer()
-                Text("CREATE")
-                    .font(.system(size: 16.0, weight: .black))
-                    .foregroundColor(Color.white)
-                    .padding(10)
-                Spacer()
-            }
-        }
-        .shadow(color: .blue, radius: 1, x: 0, y: 1)
-    }
-}
-
-// View success
-struct SuccessView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        
-        VStack(alignment: .leading){
-            Spacer()
-            Text("Well done! ✨")
-            .font(.system(size: 33, weight: .black))
-            Text("You have successfully create your profile in the demo app")
-                .padding(.top, 10)
-            
-            Spacer()
-            
-            HStack{
-                Spacer()
-                Text("Dismiss")
-                    .font(.system(size: 17, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding(11)
-                Spacer()
-            }
-            .background(Color.blue.cornerRadius(10))
-            .onTapGesture {
-                presentationMode.wrappedValue.dismiss()
-            }
-            
-        }.padding(80)
-    }
-}

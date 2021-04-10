@@ -14,7 +14,7 @@ public struct InfoSideView: View {
         
         VStack(alignment: .leading, spacing: 5){
             // Headline
-            Text(Chapters.bank[progress.chapter].headline)
+            Text(Pages.bank[progress.chapter].headline)
                 .font(.system(size: 40, design: .rounded))
                 .bold()
                 .padding(.bottom, 5)
@@ -25,24 +25,24 @@ public struct InfoSideView: View {
                 VStack(alignment: .leading){
                     
                     // Subheadline
-                    Text(Chapters.bank[progress.chapter].subHeadline)
+                    Text(Pages.bank[progress.chapter].subHeadline)
                         .bold()
                         .font(.system(.title3, design: .rounded))
                         .padding(.bottom, 5)
                     
                     //Problem description
-                    Text(Chapters.bank[progress.chapter].problemDescription)
+                    Text(Pages.bank[progress.chapter].problemDescription)
                         .opacity(0.75)
                         .padding(.bottom, 55)
                     
                     // Content Sub title
-                    Text(Chapters.bank[progress.chapter].contentSubTitle)
+                    Text(Pages.bank[progress.chapter].contentSubTitle)
                         .font(.system(.title3, design: .rounded))
                         .bold()
                         .padding(.bottom, 5)
                     
                     // Improvement description
-                    Text(Chapters.bank[progress.chapter].improvmentDescription)
+                    Text(Pages.bank[progress.chapter].improvmentDescription)
                         .opacity(0.75)
                     
                 }
@@ -55,15 +55,14 @@ public struct InfoSideView: View {
             
             // footer
             HStack(alignment: .top){
-                Text("Page \(progress.chapter + 1) of \(Chapters.bank.count)")
+                Text("Page \(progress.chapter + 1) of \(Pages.bank.count)")
                         .foregroundColor(.secondary)
                         .font(.caption)
                 
                 Spacer()
                 
                 Button(action: {
-                    if !(progress.chapter == Chapters.bank.count-1 && progress.inChapterProgress == .applyChanges) {
-                        //progress.chapter += 1
+                    if !(progress.chapter == Pages.bank.count-1 && progress.inChapterProgress == .applyChanges) {
                         progress.didTapNext()
                     } else {
                         // stop playground
@@ -72,11 +71,11 @@ public struct InfoSideView: View {
                     
                 }) {
                     // Button title, depends on the UserState
-                    Text(progress.inChapterProgress == .inital ? progress.chapter == 0 ? "  Run app  " : progress.chapter == Chapters.bank.count-1 ? " Run final app " : " Apply changes " : progress.chapter == Chapters.bank.count-1 ? " Stop Playground " : " Next page ")
+                    Text(progress.inChapterProgress == .inital ? progress.chapter == 0 ? "  Run app  " : progress.chapter == Pages.bank.count-1 ? " Run final app " : " Apply changes " : progress.chapter == Pages.bank.count-1 ? " Stop Playground " : " Next page ")
                         .fontWeight(.bold)
                         .padding(10)
                         // blue default bg color, greay for last chapter
-                        .background(!(progress.chapter == Chapters.bank.count-1 && progress.inChapterProgress == .applyChanges) ? Color.blue : Color.gray)
+                        .background(!(progress.chapter == Pages.bank.count-1 && progress.inChapterProgress == .applyChanges) ? Color.blue : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(40)
                 }

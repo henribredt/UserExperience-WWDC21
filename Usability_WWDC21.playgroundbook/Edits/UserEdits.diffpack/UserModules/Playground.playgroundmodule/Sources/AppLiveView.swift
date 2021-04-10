@@ -16,7 +16,7 @@ public struct AppLiveView: View {
                 .aspectRatio(contentMode: .fit)
                 // scale down of user focus should be on text
                 .scaleEffect(progress.inChapterProgress == .inital ? 0.9 : 1.0)
-                .animation(.default)
+            .animation(.default)
                 .overlay(
                     ZStack{
                         // debug
@@ -41,8 +41,7 @@ public struct AppLiveView: View {
                             }
                         }
                     }
-                        .padding(43)
-                        // simulate safe area
+                        .padding(47)
                         .padding(.top, 26)
                         .padding(.bottom, 26)
                 )

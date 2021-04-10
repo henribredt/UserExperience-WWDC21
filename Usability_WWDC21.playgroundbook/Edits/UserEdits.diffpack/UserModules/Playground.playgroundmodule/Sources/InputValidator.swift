@@ -19,4 +19,14 @@ public struct InputValidator {
         
         return true
     }
+    
+    // only used in app1 where the user selects the emojo from the keyboard
+    static func avatarPassedCheck(avatar: String) -> Bool {
+        // check if its only a singe character
+        if avatar.count != 1 {
+            return false
+        }
+        
+        return true
+    }
 }
