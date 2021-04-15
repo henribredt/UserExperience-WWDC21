@@ -1,9 +1,9 @@
-
-
 import SwiftUI
 
+/// First simulated app, designed to feature a bad usability
 public struct AppView1: View {
     
+    // user progress in playground
     @ObservedObject private var progress: UserProgress
     
     public init(progress: UserProgress) {
@@ -37,6 +37,7 @@ public struct AppView1: View {
             
             Spacer()
             
+            // Textfields
             Group{
                 TextField("Type here", text: $name)
                 TextField("Type here", text: $mail)
@@ -86,9 +87,10 @@ public struct AppView1: View {
                 }
             }
         }
-        // show success view if condition is true
+        
+        // show success view
         .sheet(isPresented: $showingSuccessView) {
-            SuccessView()
+            SuccessView(progress: progress)
         }
     }
 }

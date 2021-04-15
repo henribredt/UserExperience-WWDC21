@@ -1,7 +1,7 @@
 import SwiftUI
-// this file includes app view components used in the AppViews 2 to 3
+// this file includes app view components commonly used in the AppViews 
 
-// icons to let the user choose from
+/// provides avatar icons to let the user choose from
 struct Avatars {
     static let icons = ["🥰","👋🏻", "🦸🏼‍♂️", "🐳", "🏳️‍🌈", "👑", "🎾", "👩🏽‍🔬"]
 }
@@ -14,13 +14,12 @@ struct ButtonView: View {
                 .foregroundColor(.blue)
             HStack{
                 Spacer()
-                Text("CREATE")
-                    .font(.system(size: 16.0, weight: .black))
+                Text("Create")
+                    .font(.system(size: 16.0, weight: .bold))
                     .foregroundColor(Color.white)
                     .padding(10)
                 Spacer()
             }
         }
-        .shadow(color: .blue, radius: 1, x: 0, y: 1)
     }
 }

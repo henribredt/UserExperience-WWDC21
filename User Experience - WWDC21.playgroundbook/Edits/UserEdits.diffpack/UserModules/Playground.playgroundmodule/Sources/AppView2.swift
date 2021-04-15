@@ -1,7 +1,9 @@
 import SwiftUI
 
+/// Second simulated app, designed enhance the visual appearance
 public struct AppView2: View {
     
+    // user progress in playground
     @ObservedObject private var progress: UserProgress
     
     public init(progress: UserProgress) {
@@ -31,14 +33,17 @@ public struct AppView2: View {
             
             Spacer()
             
+            // Textfields
             NicknamePlain(name: $name)
             MailPlain(mail: $mail)
             AvatarPlain(icon: $icon)
             
             Spacer()
             
+            // Create account button
             Button(action: {
                 
+                // validate input 
                 if  InputValidator.namePassedCheck(name: name) && InputValidator.mailPassedCheck(mail: mail) {
                     // show view if success
                     showingSuccessView.toggle()
@@ -51,8 +56,9 @@ public struct AppView2: View {
                     .frame(height: 44)
             }
             
+            // show success view
             .sheet(isPresented: $showingSuccessView) {
-                SuccessView()
+                SuccessView(progress: progress)
             }
             
         }
@@ -71,12 +77,12 @@ struct NicknamePlain: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 10){
-            Text("YOUR NICKNAME")
+            Text("NICKNAME")
                 .font(.system(size: 12, weight: .bold))
             
-            TextField("Nickname", text: $name)
+            TextField("Tap here", text: $name)
                 .padding(11)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
         }
         .padding(.bottom)
         .padding(.bottom)
@@ -92,12 +98,12 @@ struct MailPlain: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 10){
-            Text("YOUR MAIL")
+            Text("MAIL ADDRESS")
                 .font(.system(size: 12, weight: .bold))
             
-            TextField("Mail", text: $mail)
+            TextField("Tap here", text: $mail)
                 .padding(11)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
         }
         .padding(.bottom)
     }
@@ -111,7 +117,7 @@ struct AvatarPlain: View {
     
     var body: some View {
         
-        Text("YOUR AVATAR")
+        Text("SELECT AVATAR")
             .font(.system(size: 12, weight: .bold))
             .padding(.top)
             .padding(.bottom, 10)

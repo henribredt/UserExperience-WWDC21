@@ -68,6 +68,10 @@
 				<key>File</key>
 				<string>UserModules/Playground.playgroundmodule/Sources/AppViewComponents.swift</string>
 			</dict>
+			<dict>
+				<key>File</key>
+				<string>UserModules/Playground.playgroundmodule/Sources/ContentView.swift</string>
+			</dict>
 		</array>
 		<key>Modified</key>
 		<array>

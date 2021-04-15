@@ -1,11 +1,15 @@
 
 import SwiftUI
 
+/// Defines the two InChapterProgress states
+/// inital: focus should be on reading text, show booting iphone
+/// applyChanges: show iphone with simulated app
 public enum InChapterProgress {
-    case inital
+    case inital 
     case applyChanges
 }
 
+/// Tracks user progress in playground
 public class UserProgress: ObservableObject {
     
     public init() {

@@ -24,5 +24,7 @@
 	<string>Full</string>
 	<key>HasMeaningfulResetPoint</key>
 	<false/>
+	<key>ImageReference</key>
+	<string>cover.png</string>
 </dict>
 </plist>

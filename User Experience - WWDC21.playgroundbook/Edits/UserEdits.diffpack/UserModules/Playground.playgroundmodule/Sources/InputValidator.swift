@@ -1,7 +1,8 @@
 
+/// Basic input validator for name and mail
 public struct InputValidator {
-    /// Basic input validator for name and mail
     
+    /// pass if name has at least 4 characters 
     static func namePassedCheck(name: String) -> Bool{
         if name.count < 3 {
             return false
@@ -10,9 +11,9 @@ public struct InputValidator {
         return true
     }
     
+    /// pass if mail contains @ and .io, exmaple pass: name@domaine.io
     static func mailPassedCheck(mail: String) -> Bool {
         
-        // exampleName@domaine.countryCode
         if !mail.contains("@") || !mail.contains(".io"){
             return false
         }
@@ -20,7 +21,7 @@ public struct InputValidator {
         return true
     }
     
-    // only used in app1 where the user selects the emojo from the keyboard
+    /// pass if avatar is sigle character, only use in app1 where the user selects the emojo from the keyboard
     static func avatarPassedCheck(avatar: String) -> Bool {
         // check if its only a singe character
         if avatar.count != 1 {

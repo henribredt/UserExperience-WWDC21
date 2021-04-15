@@ -1,4 +1,5 @@
 
+/// Defines how a page content is structured
 public struct Page {
     public init(headline: String, subHeadline: String, problemDescription: String, contentSubTitle: String, improvmentDescription: String) {
         self.headline = headline
@@ -16,6 +17,7 @@ public struct Page {
     
 }
 
+/// Playgrounds page contents
 public struct Pages {
     public init() {}
     
@@ -25,7 +27,7 @@ public struct Pages {
             subHeadline: "This playground focuses on three key aspects I want to share on creating good user experiences (UX)", 
             problemDescription: "We are dealing with a simple 'Create Profile' screen as an exmaple and discover what makes a good UX. The preview on the left is going to be fully interactive. \n\nTap the 'Run app' button and try to create your profile there - you will notice many usability issues, especially in the case of unexpected input. We will improve the UX step by step with some explanation and key lessons to take away. This first app version was intentionally designed to be bad.",
             contentSubTitle: "Notice", 
-            improvmentDescription: "This experience looks best in darkmode.\nTurn off 'Show results' for this playground.\nTo enter text in the app simulation, please use the small, floating keyboard of iPadOS or an external keyboard.\n\n\n\t👆🏻 Tap the bottom right blue button"),
+            improvmentDescription: "Turn off 'Enable results' for this playground.\nTo enter text in the app simulation, please use the small, floating keyboard of iPadOS or an external keyboard.\n\n\n\t👆🏻 Tap the bottom right blue button"),
         Page(
             headline: "Design clear and discoverable 🔅",
             subHeadline: "Create hierarchy and eliminate non essentials",

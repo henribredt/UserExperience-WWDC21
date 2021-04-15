@@ -2,12 +2,13 @@
 import SwiftUI
 import PlaygroundSupport
 
+/// This view shows the explanation text on the right side based on the user progress and navigaion options
 public struct InfoSideView: View {
     
     public init(progress: UserProgress) {
         self.progress = progress
     }
-    
+    // user progress in playground
     @ObservedObject private var progress: UserProgress
     
     public var body: some View {
@@ -21,10 +22,11 @@ public struct InfoSideView: View {
             Divider()
                 .padding(.bottom, 35)
             
+            // Content  
             ScrollView(){
                 VStack(alignment: .leading){
                     
-                    // Subheadline
+                    // first Subheadline
                     Text(Pages.bank[progress.chapter].subHeadline)
                         .bold()
                         .font(.system(.title3, design: .rounded))
@@ -35,7 +37,7 @@ public struct InfoSideView: View {
                         .opacity(0.75)
                         .padding(.bottom, 55)
                     
-                    // Content Sub title
+                    // second Subheadline = contentSubTitle
                     Text(Pages.bank[progress.chapter].contentSubTitle)
                         .font(.system(.title3, design: .rounded))
                         .bold()
@@ -53,7 +55,7 @@ public struct InfoSideView: View {
             Divider()
                 .padding(.bottom, 10)
             
-            // footer
+            // footer, navigation
             HStack(alignment: .top){
                 Text("Page \(progress.chapter + 1) of \(Pages.bank.count)")
                         .foregroundColor(.secondary)
@@ -63,9 +65,10 @@ public struct InfoSideView: View {
                 
                 Button(action: {
                     if !(progress.chapter == Pages.bank.count-1 && progress.inChapterProgress == .applyChanges) {
+                        // not on last page
                         progress.didTapNext()
                     } else {
-                        // stop playground
+                        // stop playground if on last page
                         PlaygroundPage.current.finishExecution()
                     }
                     

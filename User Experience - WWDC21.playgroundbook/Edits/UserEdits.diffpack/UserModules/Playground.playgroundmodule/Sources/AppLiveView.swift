@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Draws a phone frame and sets its content according to the user progress
 public struct AppLiveView: View {
     
     @ObservedObject private var progress: UserProgress
@@ -10,25 +11,27 @@ public struct AppLiveView: View {
     
     public var body: some View {
         ZStack{
-            // find image source, make sure its public domaine!!!
-            Image(uiImage: #imageLiteral(resourceName: "iPhone.png"))
+            // phone frame
+            // image sourece: https://developer.apple.com/app-store/marketing/guidelines/#section-products
+            Image(uiImage: #imageLiteral(resourceName: "iphone.png"))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                // scale down of user focus should be on text
+                // scale down when user focus should be on text
                 .scaleEffect(progress.inChapterProgress == .inital ? 0.9 : 1.0)
-            .animation(.default)
+                .animation(.default)
                 .overlay(
+                    // phone screen content
                     ZStack{
                         // debug
-                        //Color.red
+                        // Color.red
                         VStack{
-                            // show booting when in inital state
+                            // show booting view when in inital state
                             if progress.inChapterProgress == .inital {
                                 Text("")
                                     .font(.system(size: 80))
                                     .transition(.scale)
                             } else { 
-                                // show app when in applyChanges state
+                                // show app view when in applyChanges state, depending on current chapter
                                 if progress.chapter == 0 {
                                     AppView1(progress: progress)
                                 } else if progress.chapter == 1 {
@@ -41,7 +44,7 @@ public struct AppLiveView: View {
                             }
                         }
                     }
-                        .padding(47)
+                        .padding(45)
                         .padding(.top, 26)
                         .padding(.bottom, 26)
                 )

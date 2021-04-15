@@ -1,9 +1,9 @@
-
-
 import SwiftUI
 
+/// Fourth simulated app, designed to add details that enhance the user experience
 public struct AppView4: View {
     
+    // user progress in playground
     @ObservedObject private var progress: UserProgress
     
     public init(progress: UserProgress) {
@@ -73,8 +73,9 @@ public struct AppView4: View {
                 .frame(height: 44)
         }
         
+        // show success view
         .sheet(isPresented: $showingSuccessView) {
-            SuccessView()
+            SuccessView(progress: progress)
         }
         
         Spacer()
@@ -95,17 +96,19 @@ struct NicknameCheckAnimate: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 10){
-            Text("YOUR NICKNAME")
+            Text("NICKNAME")
                 .font(.system(size: 12, weight: .bold))
             
+            // show helpful error message
             if nameNotOkayHighlight {
                 Text("must have at least three characters")
                     .font(.system(size: 12, weight: .bold))
                     .foregroundColor(.red)
             }
             
+            
             HStack {
-                TextField("Nickname", text: $name)
+                TextField("Tap here", text: $name)
                     .onChange(of: name, perform: { value in
                         nameOkay = InputValidator.namePassedCheck(name: name)
                         nameNotOkayHighlight = false
@@ -119,10 +122,9 @@ struct NicknameCheckAnimate: View {
                     }
             }
             .padding(11)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
-            
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
         }
-        
+        .animation(.default)
         .padding(.bottom)
         
     }
@@ -138,9 +140,10 @@ struct MailCheckAnimate: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 10){
-            Text("YOUR MAIL")
+            Text("MAIL ADDRESS")
                 .font(.system(size: 12, weight: .bold))
             
+            // show helpful error messagae
             if mailNotOkayHighlight {
                 Text("must contain @ and be a .io domaine")
                     .font(.system(size: 12, weight: .bold))
@@ -148,7 +151,7 @@ struct MailCheckAnimate: View {
             }
             
             HStack {
-                TextField("Mail", text: $mail)
+                TextField("Tap here", text: $mail)
                     .onChange(of: mail, perform: { value in
                         mailOkay = InputValidator.mailPassedCheck(mail: mail)
                         mailNotOkayHighlight = false
@@ -162,10 +165,9 @@ struct MailCheckAnimate: View {
                     }
             }
             .padding(11)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
-            
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
         }
-        
+        .animation(.default)
     }
     
 }
@@ -186,19 +188,21 @@ struct AvatarCheckAnimate: View {
                 ForEach(Avatars.icons, id:\.self){ selectedIcon in
                     VStack(spacing: 5){
                         Text(selectedIcon)
-                            .font(.system(size: 33))
+                            .font(.system(size: 33.0))
                             .opacity(icon == selectedIcon ? 1.0 : 0.7)
                             .padding(.leading, icon == Avatars.icons[0] ? 3 : icon == selectedIcon ? 12 : 3)
-                            //.padding(.leading, icon == selectedIcon ? 12 : icon == icons[0] ? 0 : 3)
                             .padding(.trailing, icon == selectedIcon ? 12 : 3)
                             .onTapGesture {
                                 icon = selectedIcon
+                                
                             }
                             .animation(.default)
                         RoundedRectangle(cornerRadius: 3)
                             .frame(width: 12.0, height: 3.0)
                             .opacity(icon == selectedIcon ? 0.5 : 0.0)
+                            .padding(.trailing, icon == Avatars.icons[0] ? 12 : 0)
                             .animation(.default)
+                            
                     }
                 }
             }

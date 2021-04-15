@@ -1,17 +1,14 @@
-
-
 import SwiftUI
 
+/// Third simulated app, designed provide rich feedback
 public struct AppView3: View {
     
+    // user progress in playground
     @ObservedObject private var progress: UserProgress
     
     public init(progress: UserProgress) {
         self.progress = progress
     }
-    
-    // icons to let the user choose from
-    static let icons = ["🥰","👋🏻", "🦸🏼‍♂️", "🐳", "👑", "🎾", "👩🏽‍🔬"]
     
     // user input
     @State private var name = ""
@@ -74,8 +71,9 @@ public struct AppView3: View {
                 .frame(height: 44)
         }
         
+        // show success view
         .sheet(isPresented: $showingSuccessView) {
-            SuccessView()
+            SuccessView(progress: progress)
         }
         
         Spacer()
@@ -96,7 +94,7 @@ struct NicknameCheck: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 10){
-            Text("YOUR NICKNAME")
+            Text("NICKNAME")
                 .font(.system(size: 12, weight: .bold))
             
             if nameNotOkayHighlight {
@@ -106,7 +104,7 @@ struct NicknameCheck: View {
             }
             
             HStack {
-                TextField("Nickname", text: $name)
+                TextField("Tap here", text: $name)
                     .onChange(of: name, perform: { value in
                         nameOkay = InputValidator.namePassedCheck(name: name)
                         nameNotOkayHighlight = false
@@ -120,7 +118,7 @@ struct NicknameCheck: View {
                     }
             }
             .padding(11)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
             
         }
         
@@ -139,7 +137,7 @@ struct MailCheck: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 10){
-            Text("YOUR MAIL")
+            Text("MAIL ADDRESS")
                 .font(.system(size: 12, weight: .bold))
             
             if mailNotOkayHighlight {
@@ -149,7 +147,7 @@ struct MailCheck: View {
             }
             
             HStack {
-                TextField("Mail", text: $mail)
+                TextField("Tap here", text: $mail)
                     .onChange(of: mail, perform: { value in
                         mailOkay = InputValidator.mailPassedCheck(mail: mail)
                         mailNotOkayHighlight = false
@@ -163,7 +161,7 @@ struct MailCheck: View {
                     }
             }
             .padding(11)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
             
         }
         
@@ -178,7 +176,7 @@ struct AvatarCheck: View {
     
     var body: some View {
         
-        Text("YOUR AVATAR")
+        Text("SELECT AVATAR")
             .font(.system(size: 12, weight: .bold))
             .padding(.top)
             .padding(.bottom, 10)
@@ -190,7 +188,6 @@ struct AvatarCheck: View {
                             .font(.system(size: 33))
                             .opacity(icon == selectedIcon ? 1.0 : 0.7)
                             .padding(.leading, icon == Avatars.icons[0] ? 3 : icon == selectedIcon ? 12 : 3)
-                            //.padding(.leading, icon == selectedIcon ? 12 : icon == icons[0] ? 0 : 3)
                             .padding(.trailing, icon == selectedIcon ? 12 : 3)
                             .onTapGesture {
                                 icon = selectedIcon
@@ -198,6 +195,7 @@ struct AvatarCheck: View {
                         RoundedRectangle(cornerRadius: 3)
                             .frame(width: 12.0, height: 3.0)
                             .opacity(icon == selectedIcon ? 0.5 : 0.0)
+                            .padding(.trailing, icon == Avatars.icons[0] ? 12 : 0)
                     }
                 }
             }
