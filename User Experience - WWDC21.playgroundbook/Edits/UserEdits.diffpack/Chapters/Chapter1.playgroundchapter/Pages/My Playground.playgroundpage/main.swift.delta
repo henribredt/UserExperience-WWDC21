@@ -7,7 +7,7 @@
 		<dict>
 			<key>ModifiedContent</key>
 			<string>// Welcome 👋🏻
-// Tap the 'Run My Code' button in the bottom right corner to begin. Make sure to turn 'Enable Results' off for this playground.
+// Tap the 'Run My Code' button in the bottom right corner to begin. Make sure to turn off  'Enable Results' for this playground.
 
 import PlaygroundSupport
 
@@ -17,7 +17,7 @@ PlaygroundPage.current.setLiveView(ContentView())
 
 </string>
 			<key>ModifiedRange</key>
-			<string>{0, 278}</string>
+			<string>{0, 279}</string>
 			<key>OriginalContent</key>
 			<string></string>
 			<key>OriginalRange</key>

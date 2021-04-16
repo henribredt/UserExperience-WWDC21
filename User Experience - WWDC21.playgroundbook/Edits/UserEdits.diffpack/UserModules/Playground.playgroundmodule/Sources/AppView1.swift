@@ -61,7 +61,7 @@ public struct AppView1: View {
                         name = ""
                         mail = ""
                         avatar = ""
-                        statusMessage = "Some of your input is incorrect, try again. Your mail must contain @ and be a .io domaine, avatar can only be a singe emoji, name must have at least three characters"
+                        statusMessage = "Some of your input is incorrect, try again. Your mail must contain @ and be a .io domain, avatar can only be a singe emoji, name must have at least three characters"
                     }
                 }) {
                     Text(" OK ")

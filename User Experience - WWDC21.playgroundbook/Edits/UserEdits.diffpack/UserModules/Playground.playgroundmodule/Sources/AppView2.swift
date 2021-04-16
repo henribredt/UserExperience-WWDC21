@@ -48,7 +48,7 @@ public struct AppView2: View {
                     // show view if success
                     showingSuccessView.toggle()
                 } else {
-                    statusMessage = "Your mail must contain @ and be a .io domaine, the name must have at least three characters"
+                    statusMessage = "Your mail must contain @ and be a .io domain, the name must have at least three characters"
                 }
                 
             }) {

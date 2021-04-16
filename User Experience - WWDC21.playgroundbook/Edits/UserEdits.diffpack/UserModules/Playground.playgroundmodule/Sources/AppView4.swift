@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Fourth simulated app, designed to add details that enhance the user experience
+/// Fourth simulated app, designed to add details that enhance the user experience including animations
 public struct AppView4: View {
     
     // user progress in playground
@@ -21,6 +21,10 @@ public struct AppView4: View {
     @State private var mailOkay = false
     @State private var mailNotOkayHighlight = false
     
+    // used for textfield shake animation on incorrect input
+    @State var nameIncorrectAttempts: Int = 0
+    @State var mailIncorrectAttempts: Int = 0
+    
     // show info view, when the user successfully "created" an account
     @State private var showingSuccessView = false
     
@@ -35,14 +39,14 @@ public struct AppView4: View {
             Spacer()
             
             // Select nick name view
-            NicknameCheckAnimate(name: $name, nameOkay: $nameOkay, nameNotOkayHighlight: $nameNotOkayHighlight)
+            NicknameCheckAnimate(name: $name, nameOkay: $nameOkay, nameNotOkayHighlight: $nameNotOkayHighlight, nameIncorrectAttempts: $nameIncorrectAttempts)
                 .padding(.bottom)
-                .animation(.default)
+            //.animation(.default)
             
             // Type in mail view 
-            MailCheckAnimate(mail: $mail, mailOkay: $mailOkay, mailNotOkayHighlight: $mailNotOkayHighlight)
+            MailCheckAnimate(mail: $mail, mailOkay: $mailOkay, mailNotOkayHighlight: $mailNotOkayHighlight, mailIncorrectAttempts: $mailIncorrectAttempts)
                 .padding(.bottom)
-                .animation(.default)
+            //.animation(.default)
                 
             // Select avatar view
             AvatarCheckAnimate(icon: $icon)
@@ -55,17 +59,26 @@ public struct AppView4: View {
         
         Button(action: {
             
-            if !mailOkay {
-                // inditcate that the mail failed
-                mailNotOkayHighlight = true
-            }
-            if !nameOkay {
-                // inditcate that the name failed
-                nameNotOkayHighlight = true
-            }
             if  mailOkay && nameOkay {
                 // show view if success
                 showingSuccessView.toggle()
+            } else {
+                // invalid input
+                if !mailOkay {
+                    // inditcate that the mail failed
+                    withAnimation(.default) {
+                        self.mailIncorrectAttempts += 1
+                    }
+                    mailNotOkayHighlight = true
+                }
+                if !nameOkay {
+                    // inditcate that the name failed
+                    withAnimation(.default) {
+                        
+                        self.nameIncorrectAttempts += 1
+                    }
+                    nameNotOkayHighlight = true
+                }
             }
             
         }) {
@@ -92,6 +105,7 @@ struct NicknameCheckAnimate: View {
     @Binding var name: String
     @Binding var nameOkay: Bool
     @Binding var nameNotOkayHighlight: Bool
+    @Binding var nameIncorrectAttempts: Int
     
     var body: some View {
         
@@ -123,8 +137,9 @@ struct NicknameCheckAnimate: View {
             }
             .padding(11)
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
+            // Shake on wrong input
+            .modifier(ShakeEffect(animatableData: CGFloat(nameIncorrectAttempts)))
         }
-        .animation(.default)
         .padding(.bottom)
         
     }
@@ -136,6 +151,7 @@ struct MailCheckAnimate: View {
     @Binding var mail: String
     @Binding var mailOkay: Bool
     @Binding var mailNotOkayHighlight: Bool
+    @Binding var mailIncorrectAttempts: Int
     
     var body: some View {
         
@@ -145,7 +161,7 @@ struct MailCheckAnimate: View {
             
             // show helpful error messagae
             if mailNotOkayHighlight {
-                Text("must contain @ and be a .io domaine")
+                Text("must contain @ and be a .io domain")
                     .font(.system(size: 12, weight: .bold))
                     .foregroundColor(.red)
             }
@@ -166,8 +182,9 @@ struct MailCheckAnimate: View {
             }
             .padding(11)
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary, lineWidth: 1.5))
+            // Shake on wrong input
+            .modifier(ShakeEffect(animatableData: CGFloat(mailIncorrectAttempts)))
         }
-        .animation(.default)
     }
     
 }
@@ -210,3 +227,14 @@ struct AvatarCheckAnimate: View {
     }
 }
 
+// Shake effect for wrong input
+struct ShakeEffect: GeometryEffect {
+    var animatableData: CGFloat
+    
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX:
+                                                10 * sin(animatableData * .pi * CGFloat(3)),
+                                              y: 0)
+        )
+    }
+}

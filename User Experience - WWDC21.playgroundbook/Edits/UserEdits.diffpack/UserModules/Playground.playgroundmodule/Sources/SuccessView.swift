@@ -30,21 +30,7 @@ struct SuccessView: View {
             Spacer()
             Spacer()
             
-            HStack(spacing: 30){
-                
-                // Dismiss button
-                HStack{
-                    Spacer()
-                    Text("Dismiss")
-                        .font(.system(size: 17, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(11)
-                    Spacer()
-                }
-                .background(Color.secondary.cornerRadius(40))
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
-                }
+            VStack(spacing: 15){
                 
                 if !(progress.chapter == Pages.bank.count-1){
                     // it is not the last page, show button to navigate to the next page
@@ -52,7 +38,7 @@ struct SuccessView: View {
                     // Next Page button
                     HStack{
                         Spacer()
-                        Text("Next page")
+                        Text("  Next page  ")
                             .font(.system(size: 17, weight: .bold))
                             .foregroundColor(.white)
                             .padding(11)
@@ -64,6 +50,20 @@ struct SuccessView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                     
+                }
+                
+                // Dismiss button
+                HStack{
+                    Spacer()
+                    Text("  Dismiss  ")
+                        .font(.system(size: 17, weight: .regular))
+                        .foregroundColor(.white)
+                        .padding(progress.chapter == Pages.bank.count-1 ? 11 : 0)
+                    Spacer()
+                }
+                .background(progress.chapter == Pages.bank.count-1 ? Color.blue.cornerRadius(40) : Color.clear.cornerRadius(40))
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
                 }
                 
             }

@@ -141,7 +141,7 @@ struct MailCheck: View {
                 .font(.system(size: 12, weight: .bold))
             
             if mailNotOkayHighlight {
-                Text("must contain @ and be a .io domaine")
+                Text("must contain @ and be a .io domain")
                     .font(.system(size: 12, weight: .bold))
                     .foregroundColor(.red)
             }
