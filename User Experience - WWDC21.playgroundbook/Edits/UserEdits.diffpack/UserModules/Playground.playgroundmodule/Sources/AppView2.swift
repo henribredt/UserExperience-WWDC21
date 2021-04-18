@@ -40,34 +40,38 @@ public struct AppView2: View {
             
             Spacer()
             
-            // Create account button
-            Button(action: {
-                
-                // validate input 
-                if  InputValidator.namePassedCheck(name: name) && InputValidator.mailPassedCheck(mail: mail) {
-                    // show view if success
-                    showingSuccessView.toggle()
-                } else {
-                    statusMessage = "Your mail must contain @ and be a .io domain, the name must have at least three characters"
-                }
-                
-            }) {
-                ButtonView()
-                    .frame(height: 44)
+            // Create profile button view
+            createButton
+        }
+        // show success view
+        .sheet(isPresented: $showingSuccessView) {
+            SuccessView(progress: progress)
+        }
+    }
+    
+    //MARK: VIEW VARIABLES
+    
+    private var createButton: some View {
+        Button(action: {
+            
+            // validate input 
+            if  InputValidator.namePassedCheck(name: name) && InputValidator.mailPassedCheck(mail: mail) {
+                // show view if success
+                showingSuccessView.toggle()
+            } else {
+                statusMessage = "Your mail must contain @ and be a .io domain, the name must have at least three characters"
             }
             
-            // show success view
-            .sheet(isPresented: $showingSuccessView) {
-                SuccessView(progress: progress)
-            }
-            
+        }) {
+            ButtonView()
+                .frame(height: 44)
         }
     }
     
 }
 
 
-// Component views
+//MARK: Component views
 
 // select user name view
 struct NicknamePlain: View {
@@ -141,4 +145,3 @@ struct AvatarPlain: View {
         }
     }
 }
-

@@ -41,22 +41,31 @@ public struct AppView4: View {
             // Select nick name view
             NicknameCheckAnimate(name: $name, nameOkay: $nameOkay, nameNotOkayHighlight: $nameNotOkayHighlight, nameIncorrectAttempts: $nameIncorrectAttempts)
                 .padding(.bottom)
-            //.animation(.default)
             
             // Type in mail view 
             MailCheckAnimate(mail: $mail, mailOkay: $mailOkay, mailNotOkayHighlight: $mailNotOkayHighlight, mailIncorrectAttempts: $mailIncorrectAttempts)
                 .padding(.bottom)
-            //.animation(.default)
                 
             // Select avatar view
             AvatarCheckAnimate(icon: $icon)
             
             Spacer()
+            
+            // Create profile button view
+            createButton
         }
         .transition(.scale)
         
-        Spacer()
-        
+        // show success view
+        .sheet(isPresented: $showingSuccessView) {
+            SuccessView(progress: progress)
+        }
+    }
+    
+    
+    //MARK: VIEW VARIABLES
+    
+    private var createButton: some View {
         Button(action: {
             
             if  mailOkay && nameOkay {
@@ -85,14 +94,6 @@ public struct AppView4: View {
             ButtonView()
                 .frame(height: 44)
         }
-        
-        // show success view
-        .sheet(isPresented: $showingSuccessView) {
-            SuccessView(progress: progress)
-        }
-        
-        Spacer()
-        
     }
     
 }
@@ -120,13 +121,13 @@ struct NicknameCheckAnimate: View {
                     .foregroundColor(.red)
             }
             
-            
             HStack {
                 TextField("Tap here", text: $name)
                     .onChange(of: name, perform: { value in
                         nameOkay = InputValidator.namePassedCheck(name: name)
                         nameNotOkayHighlight = false
                     })
+                
                 Image(systemName: nameOkay ? "checkmark.square.fill" : "exclamationmark.square.fill")
                     .foregroundColor(nameNotOkayHighlight ? Color.red : nameOkay ? Color.green : Color.secondary)
                     .onTapGesture {
@@ -227,7 +228,9 @@ struct AvatarCheckAnimate: View {
     }
 }
 
-// Shake effect for wrong input
+// Shake effect for wrong input of textfields
+// inspired by: https://www.objc.io/blog/2019/10/01/swiftui-shake-animation/ 
+// to achieve the shake, implemented a modified version
 struct ShakeEffect: GeometryEffect {
     var animatableData: CGFloat
     

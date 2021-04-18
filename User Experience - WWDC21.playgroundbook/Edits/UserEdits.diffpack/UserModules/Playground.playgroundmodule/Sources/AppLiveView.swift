@@ -23,32 +23,40 @@ public struct AppLiveView: View {
                 .overlay(
                     // phone screen content
                     ZStack{
-                        // debug
-                        // Color.red
-                        VStack{
-                            // show booting view when in inital state
-                            if progress.inChapterProgress == .inital {
-                                Text("")
-                                    .font(.system(size: 80))
-                                    .transition(.scale)
-                            } else { 
-                                // show app view when in applyChanges state, depending on current chapter
-                                if progress.chapter == 0 {
-                                    AppView1(progress: progress)
-                                } else if progress.chapter == 1 {
-                                    AppView2(progress: progress)
-                                } else if progress.chapter == 2 {
-                                    AppView3(progress: progress)
-                                } else {
-                                    AppView4(progress: progress)
-                                }
-                            }
-                        }
+                        // Color.red // debug
+                        
+                        // view shows the correct simulated app depending on progress
+                        appSimulation
                     }
                     .padding(47)
                     .padding(.top, 27)
                     .padding(.bottom, 27)
                 )
+        }
+    }
+    
+    
+    // MARK: - VIEW VARIABLES
+    
+    private var appSimulation: some View {
+        VStack{
+            // show booting view when in inital state
+            if progress.inChapterProgress == .inital {
+                Text("")
+                    .font(.system(size: 80))
+                    .transition(.scale)
+            } else { 
+                // show app view when in applyChanges state, depending on current chapter
+                if progress.chapter == 0 {
+                    AppView1(progress: progress)
+                } else if progress.chapter == 1 {
+                    AppView2(progress: progress)
+                } else if progress.chapter == 2 {
+                    AppView3(progress: progress)
+                } else {
+                    AppView4(progress: progress)
+                }
+            }
         }
     }
     

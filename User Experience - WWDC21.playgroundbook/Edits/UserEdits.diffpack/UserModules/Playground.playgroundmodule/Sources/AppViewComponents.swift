@@ -6,7 +6,7 @@ struct Avatars {
     static let icons = ["🥰","👋🏻", "🦸🏼‍♂️", "🐳", "🏳️‍🌈", "🐣", "👑", "🎾", "👩🏽‍🔬", "🏖", "👨🏼‍💻"]
 }
 
-// Create button
+// Create button layout view, no functionality
 struct ButtonView: View {
     var body: some View {
         ZStack{

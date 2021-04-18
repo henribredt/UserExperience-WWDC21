@@ -46,11 +46,24 @@ public struct AppView3: View {
             AvatarCheck(icon: $icon)
             
             Spacer()
+            
+            // Create profile button view
+            createButton
+            
         }
         .transition(.scale)
         
-        Spacer()
+        // show success view
+        .sheet(isPresented: $showingSuccessView) {
+            SuccessView(progress: progress)
+        }
         
+    }
+    
+    
+    //MARK: VIEW VARIABLES
+    
+    public var createButton: some View {
         Button(action: {
             
             if !mailOkay {
@@ -70,19 +83,12 @@ public struct AppView3: View {
             ButtonView()
                 .frame(height: 44)
         }
-        
-        // show success view
-        .sheet(isPresented: $showingSuccessView) {
-            SuccessView(progress: progress)
-        }
-        
-        Spacer()
-        
     }
     
 }
 
-// Component views
+
+//MARK: Component views
 
 // select user name view
 struct NicknameCheck: View {

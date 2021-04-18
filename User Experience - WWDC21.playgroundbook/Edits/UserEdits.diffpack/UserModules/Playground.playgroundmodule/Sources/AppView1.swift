@@ -18,17 +18,18 @@ public struct AppView1: View {
     // Message content to inform user about bad input
     @State private var statusMessage = ""
     
-    // show info view, when the user successfully "created" an account
+    // show info view, when the user successfully "created" a profile
     @State private var showingSuccessView = false
-    
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 10){
             
-            header // includes title, instruction and error message texts
+            // header includes title, instruction and error message texts
+            header 
             Spacer()
             
-            inputSection // includes textfields for name, mail and avatar
+            // inputSection includes textfields for name, mail and avatar
+            inputSection 
             Spacer()
             
             // Two bottom buttons
