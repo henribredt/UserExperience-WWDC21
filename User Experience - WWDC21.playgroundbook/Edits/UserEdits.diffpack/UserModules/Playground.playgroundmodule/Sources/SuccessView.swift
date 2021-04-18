@@ -14,8 +14,12 @@ struct SuccessView: View {
         
         VStack(alignment: .leading){
             Spacer()
+                
+            // Title 
             Text("Well done! ✨")
                 .font(.system(size: 33, weight: .bold, design: .rounded))
+            
+            // Message content 
             if !(progress.chapter == Pages.bank.count-1){
                 // not last page
                 Text("You have successfully created your profile in the demo app.\n\nContinue on the 'Next page'\nor tap 'Dismiss' and test how the current app handles wrong input.")
@@ -26,48 +30,55 @@ struct SuccessView: View {
                     .padding(.top, 15)
             }
             
-            
             Spacer()
             Spacer()
             
-            VStack(spacing: 15){
-                
-                if !(progress.chapter == Pages.bank.count-1){
-                    // it is not the last page, show button to navigate to the next page
-                    
-                    // Next Page button
-                    HStack{
-                        Spacer()
-                        Text("  Next page  ")
-                            .font(.system(size: 17, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(11)
-                        Spacer()
-                    }
-                    .background(Color.blue.cornerRadius(40))
-                    .onTapGesture {
-                        progress.didTapNext()
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    
-                }
-                
-                // Dismiss button
+            // next page and dismiss button
+            buttons
+            
+        }.padding(80)
+    }
+    
+    
+    // MARK: - VIEW VARIABLES
+    
+    private var buttons : some View {
+        VStack(spacing: 15){
+            
+            if !(progress.chapter == Pages.bank.count-1){
+                // it is not the last page, show button to navigate to the next page
+                // Next Page button
                 HStack{
                     Spacer()
-                    Text("  Dismiss  ")
-                        .font(.system(size: 17, weight: progress.chapter == Pages.bank.count-1 ? .bold : .regular))
-                        .foregroundColor(progress.chapter == Pages.bank.count-1 ? .white : .primary)
-                        .padding(progress.chapter == Pages.bank.count-1 ? 11 : 0)
+                    Text("  Next page  ")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding(11)
                     Spacer()
                 }
-                .background(progress.chapter == Pages.bank.count-1 ? Color.blue.cornerRadius(40) : Color.clear.cornerRadius(40))
+                .background(Color.blue.cornerRadius(40))
                 .onTapGesture {
+                    progress.didTapNext()
                     presentationMode.wrappedValue.dismiss()
                 }
                 
             }
             
-        }.padding(80)
+            // Dismiss button
+            HStack{
+                Spacer()
+                Text("  Dismiss  ")
+                    .font(.system(size: 17, weight: progress.chapter == Pages.bank.count-1 ? .bold : .regular))
+                    .foregroundColor(progress.chapter == Pages.bank.count-1 ? .white : .primary)
+                    .padding(progress.chapter == Pages.bank.count-1 ? 11 : 0)
+                Spacer()
+            }
+            .background(progress.chapter == Pages.bank.count-1 ? Color.blue.cornerRadius(40) : Color.clear.cornerRadius(40))
+            .onTapGesture {
+                presentationMode.wrappedValue.dismiss()
+            }
+            
+        }
     }
+    
 }
