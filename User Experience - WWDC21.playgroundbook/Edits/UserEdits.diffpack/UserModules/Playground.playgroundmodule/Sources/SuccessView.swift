@@ -15,15 +15,15 @@ struct SuccessView: View {
         VStack(alignment: .leading){
             Spacer()
             Text("Well done! ✨")
-                .font(.system(size: 33, weight: .black))
+                .font(.system(size: 33, weight: .bold, design: .rounded))
             if !(progress.chapter == Pages.bank.count-1){
                 // not last page
-                Text("You have successfully created your profile in the demo app.\nContinue on the next page.")
-                    .padding(.top, 11)
+                Text("You have successfully created your profile in the demo app.\n\nContinue on the 'Next page'\nor tap 'Dismiss' and test how the current app handles wrong input.")
+                    .padding(.top, 15)
             } else {
                 // last page
                 Text("You've completed this Playground and gained an insight into the world of user experience design. I hope it was interesting and you learned something new.")
-                    .padding(.top, 11)
+                    .padding(.top, 15)
             }
             
             
