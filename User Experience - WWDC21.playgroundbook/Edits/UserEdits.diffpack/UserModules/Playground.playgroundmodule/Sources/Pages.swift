@@ -33,7 +33,7 @@ public struct Pages {
             subHeadline: "Create hierarchy and eliminate non essentials",
             problemDescription: "Always provide the minimum amout of interface elements that allow the desired functionality. Create tidy interfaces with a clear structure. Offer obvious signifiers pointing to the current options the user has (affordances) and highlight the primary action to guide the user.",
             contentSubTitle: "Ideas how that can be done",
-            improvmentDescription: "As you probably have noticed, the example app currently is cluttered, highlights a secondary action and using it just does not feel good. It's time to improve that with the following changes.\n\n▶︎ Eliminate the non essential interface elements\n▶︎ Use percise typography and a clear design language to create hierarchy\n▶︎ Label the interaction elements (if its not absolutely obvious)\n▶︎ Provide a more comfortable way to select the avatar emoji\n▶︎ Make the button discoverable and meaningful"),
+            improvmentDescription: "As you probably have noticed, the example app currently is cluttered, highlights a secondary action and using it just does not feel good. It's time to improve that with the following changes.\n\n▶︎ Eliminate the non essential interface elements\n▶︎ Use precise typography and a clear design language to create hierarchy\n▶︎ Label the interaction elements (if its not absolutely obvious)\n▶︎ Provide a more comfortable way to select the avatar emoji\n▶︎ Make the button discoverable and meaningful"),
         Page(
             headline: "Provide rich feedback  👍🏻",
             subHeadline: "Make the state obvious - especially in the case of errors",
@@ -45,7 +45,7 @@ public struct Pages {
             subHeadline: "Add the little extra, the unexpected",
             problemDescription:"Creating an experience worth remembering takes more than doing nothing wrong. Make it interesting, spend time on details, try to take the interaction to the next level - simply make it surprisingly good. Pay attention to make it suddle and not to disturb the general user flow.",
             contentSubTitle: "Ideas how that can be done",
-            improvmentDescription: "Now it's time for some final polishes to create a remarkable user experience. \n\n▶︎ Add some nice, suddle animations to smoothen the experience\n▶︎ Make the text fields shake on incorrect input\n▶︎ Focus on microinteractions"),
+            improvmentDescription: "Now it's time for some final polishes to create a truly remarkable user experience. \n\n▶︎ Add some nice, suddle animations to smoothen the experience\n▶︎ Make the text fields shake on incorrect input\n▶︎ Focus on microinteractions, animate the emoji selection"),
         Page(headline: "Congratulations  🚀",
                 subHeadline: "You have experienced how bad usability feels, determined the problems and learnd how to fix them",
                 problemDescription: "The three concepts of this playground can be applied when designing a new experience, such as an app. Always remember, there are no dumb users - there is only bad design. If you like, tap 'Run final app' and play around with the current app further. You can think about other bits that could be improved.\n\nI wish you a great WWDC21, see you there!",

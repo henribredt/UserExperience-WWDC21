@@ -3,6 +3,7 @@ import SwiftUI
 /// Draws a phone frame and sets its content according to the user progress
 public struct AppLiveView: View {
     
+    // track user progress
     @ObservedObject private var progress: UserProgress
     
     public init(progress: UserProgress) {

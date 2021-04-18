@@ -57,7 +57,7 @@ struct SuccessView: View {
                     Spacer()
                     Text("  Dismiss  ")
                         .font(.system(size: 17, weight: progress.chapter == Pages.bank.count-1 ? .bold : .regular))
-                        .foregroundColor(.white)
+                        .foregroundColor(progress.chapter == Pages.bank.count-1 ? .white : .primary)
                         .padding(progress.chapter == Pages.bank.count-1 ? 11 : 0)
                     Spacer()
                 }
