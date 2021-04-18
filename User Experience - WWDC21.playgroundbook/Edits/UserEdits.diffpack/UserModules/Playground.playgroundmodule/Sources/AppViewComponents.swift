@@ -3,7 +3,7 @@ import SwiftUI
 
 /// provides avatar icons to let the user choose from
 struct Avatars {
-    static let icons = ["🥰","👋🏻", "🦸🏼‍♂️", "🐳", "🏳️‍🌈", "👑", "🎾", "👩🏽‍🔬"]
+    static let icons = ["🥰","👋🏻", "🦸🏼‍♂️", "🐳", "🏳️‍🌈", "🐣", "👑", "🎾", "👩🏽‍🔬", "🏖", "👨🏼‍💻"]
 }
 
 // Create button

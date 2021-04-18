@@ -44,9 +44,9 @@ public struct AppLiveView: View {
                             }
                         }
                     }
-                        .padding(45)
-                        .padding(.top, 26)
-                        .padding(.bottom, 26)
+                    .padding(47)
+                    .padding(.top, 27)
+                    .padding(.bottom, 27)
                 )
         }
     }

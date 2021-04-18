@@ -85,7 +85,6 @@ public struct InfoSideView: View {
                 .animation(.default)
             }
             
-            
         }
     }
 }

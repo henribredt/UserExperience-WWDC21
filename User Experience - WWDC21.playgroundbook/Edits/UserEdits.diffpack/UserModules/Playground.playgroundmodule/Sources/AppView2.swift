@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Second simulated app, designed enhance the visual appearance
+/// Second simulated app, designed to enhance the visual appearance
 public struct AppView2: View {
     
     // user progress in playground

@@ -56,7 +56,7 @@ struct SuccessView: View {
                 HStack{
                     Spacer()
                     Text("  Dismiss  ")
-                        .font(.system(size: 17, weight: .regular))
+                        .font(.system(size: 17, weight: progress.chapter == Pages.bank.count-1 ? .bold : .regular))
                         .foregroundColor(.white)
                         .padding(progress.chapter == Pages.bank.count-1 ? 11 : 0)
                     Spacer()
