@@ -1,4 +1,4 @@
-# User Experience Playground
+# User Experience Playground - Swift Student Challenge Winner 2021 🎉
 An educational Swift Playground dealing with Usability and User Experience Design. Created as a submission to the 2021 Apple Swift Student Challenge by Henri Bredt in April 2021.
 
 ![](Ressources/demo1.jpg)
