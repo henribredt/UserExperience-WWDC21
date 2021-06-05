@@ -38,8 +38,8 @@ public struct Pages {
             headline: "Provide rich feedback  👍🏻",
             subHeadline: "Make the state obvious - especially in the case of errors",
             problemDescription: "The design must always provide enough information about the current state of the app. Make it as easy as possible for the user to understand what's happening so that he has the feeling of control. Indicate instantly erroneous input and provide help on how to fix possible issues.",
-            contentSubTitle: "Ideas how can that be done",
-            improvmentDescription: "As of right now, the example app will only check the input when the 'Create' button was tapped and provides just general help. He can't know which input was incorrect. Let's change that.\n\n▶︎ Perform the input validation in realtime and indicate the result instantly \n▶︎ Use colors to indicate errors (red) and correct input (green)\n▶︎ Provide relevant error messages\n▶︎ Show tips when the user taps on the exclamation mark "),
+            contentSubTitle: "Ideas how that can be done",
+            improvmentDescription: "As of right now, the example app will only check the input when the 'Create' button was tapped and provides just general help. The user can't know which input was incorrect. Let's change that.\n\n▶︎ Perform the input validation in realtime and indicate the result instantly \n▶︎ Use colors to indicate errors (red) and correct input (green)\n▶︎ Provide relevant error messages\n▶︎ Show tips when the user taps on the exclamation mark "),
         Page(
             headline: "Make it exciting  🤩",
             subHeadline: "Add the little extra, the unexpected",
