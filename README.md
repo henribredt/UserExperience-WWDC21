@@ -10,4 +10,4 @@ The Playground focuses on three important aspects of designing a good user exper
 When the user has finished exploring the Playground, he is sensitized for bad UX, knows some fundamental rules and experienced the apps transformation from bad to good usability.
 
 ## Installation 👨🏼‍💻
-The Playground was optimized for running on iPad. Download the Swift Playgrounds App from the App Store and open this playground. Make sure to turn off 'Enable Results'.
+The Playground was optimized for running on iPad. Download the Swift Playgrounds App from the App Store and open this playground. Make sure to turn off 'Enable Results' and use the floating keyboard of iPadOS or an external keyboard for text input.
